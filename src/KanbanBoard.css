@@ -169,7 +169,7 @@ body {
     padding: 15px; /* Padding around the content */
     margin-bottom: 20px; /* Spacing between cards */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow effect for card */
-    width: 300px; /* Card width */
+    width: 250px; /* Card width */
     position: relative; /* Positioning for avatar */
     transition: box-shadow 0.3s; /* Smooth transition for shadow */
   }
