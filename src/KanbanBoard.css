@@ -1,0 +1,226 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+  }
+  /* Grouping and Ordering Controls */
+  .grouping-ordering {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+  }
+  
+ /* General Styling for Grouping and Ordering */
+.display-container {
+    background-color: #ffffff;
+    border: 1px solid #d3d3d3; /* Light border to differentiate the container */
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .display-button {
+    background-color: #f5f5f5;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .display-button:hover {
+    background-color: #e0e0e0; /* Darker shade on hover */
+  }
+  
+  .dropdown-container {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    position: absolute;
+    top: 50px; /* Position dropdown below the button */
+    z-index: 100;
+    width: 200px;
+    display: none; /* Hide dropdown by default */
+  }
+  
+  .dropdown-container.active {
+    display: block; /* Show dropdown when active */
+  }
+  
+  .dropdown-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: #333;
+    border-bottom: 1px solid #e6e6e6;
+  }
+  
+  .dropdown-item:hover {
+    background-color: #f5f5f5;
+  }
+  
+  select {
+    padding: 8px;
+    border: 1px solid #d3d3d3;
+    border-radius: 6px;
+    background-color: #ffffff;
+    font-size: 0.9rem;
+    color: #333;
+  }
+  
+  select:focus {
+    outline: none;
+    border-color: #007bff; /* Blue border when focused */
+  }
+  
+  
+  .kanban-column {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 16px;
+    background-color: #fdfdfd;
+    margin: 8px;
+    width: 280px;
+    display: inline-block;
+    vertical-align: top;
+  }
+  
+  .column-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .button-group {
+    display: flex;
+    gap: 8px;
+  }
+  
+  .toggle-add-ticket-button {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: transparent;
+    color: #505050;
+    font-size: 1.5rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    position: relative;
+    top: -7px; /* Move the button slightly upwards */
+  }
+  
+  .toggle-add-ticket-button:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.1);
+  }
+  
+  .add-ticket-button {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: transparent;
+    color: #505050;
+    font-size: 1.5rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .add-ticket-button:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.1);
+  }
+  
+  .add-ticket-inputs {
+    display: flex;
+    flex-direction: column;
+    margin-top: 8px;
+  }
+  
+  .add-ticket-inputs input {
+    margin-bottom: 8px;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #e0e0e0;
+  }
+  
+  .ticket-card {
+    background-color: #ffffff; /* White background */
+    border-radius: 10px; /* Rounded corners */
+    padding: 15px; /* Padding around the content */
+    margin-bottom: 20px; /* Spacing between cards */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow effect for card */
+    width: 300px; /* Card width */
+    position: relative; /* Positioning for avatar */
+    transition: box-shadow 0.3s; /* Smooth transition for shadow */
+  }
+  
+  .ticket-card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Darker shadow on hover */
+  }
+  
+  .ticket-header {
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Align items vertically */
+    justify-content: space-between; /* Space between items */
+    margin-bottom: 10px; /* Space below header */
+  }
+  
+  .ticket-user-avatar {
+    background-color: #d47b3a;
+    color: #fff;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    font-weight: bold;
+  }
+  .ticket-id {
+    font-size: 0.9rem; /* Smaller font for ID */
+    color: #888888; /* Light gray color for ID */
+    margin-left: 20px; /* Space between avatar and ID */
+  }
+  
+  .ticket-title {
+    font-size: 1.2rem; /* Title font size */
+    font-weight: bold; /* Bold title */
+    color: #333333; /* Dark color for title */
+    margin-bottom: 10px; /* Space below title */
+  }
+  
+  .ticket-footer {
+    display: flex; /* Flexbox for footer items */
+    justify-content: space-between; /* Space between items */
+    align-items: center; /* Align items vertically */
+  }
+  
+  .ticket-tag {
+    background-color: #e0e0e0; /* Tag background color */
+    color: #555555; /* Tag text color */
+    padding: 5px 10px; /* Tag padding */
+    border-radius: 15px; /* Rounded corners for tag */
+    font-size: 0.9rem; /* Font size for tag */
+  }
+  
