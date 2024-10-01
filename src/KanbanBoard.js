@@ -1,19 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import TicketCard from './TicketCard';
 import './KanbanBoard.css';
 
 function KanbanBoard({ tickets, groupBy, sortBy }) {
-  const [ticketList, setTicketList] = useState(tickets);
-  const [newTicket, setNewTicket] = useState({
-    title: '',
-    group: '',
-    priority: 1,
-  });
-  const [showAddTicketInput, setShowAddTicketInput] = useState({});
-
   const groupTickets = () => {
     const groups = {};
-    ticketList.forEach(ticket => {
+    tickets.forEach(ticket => {
       const key = ticket[groupBy];
       if (!groups[key]) {
         groups[key] = [];
@@ -21,10 +13,11 @@ function KanbanBoard({ tickets, groupBy, sortBy }) {
       groups[key].push(ticket);
     });
 
+    // Sort tickets within each group
     for (const key in groups) {
       groups[key].sort((a, b) => {
         if (sortBy === 'priority') {
-          return b.priority - a.priority;
+          return b.priority - a.priority; // Sort by numeric priority level (higher first)
         } else if (sortBy === 'title') {
           return a.title.localeCompare(b.title);
         }
@@ -37,88 +30,15 @@ function KanbanBoard({ tickets, groupBy, sortBy }) {
 
   const groupedTickets = groupTickets();
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setNewTicket(prevTicket => ({
-      ...prevTicket,
-      [name]: value,
-    }));
-  };
-
-  const handleAddTicket = (group) => {
-    const newTicketData = {
-      id: Math.random().toString(36).substr(2, 9),
-      title: newTicket.title,
-      group,
-      priority: parseInt(newTicket.priority, 10),
-    };
-    setTicketList(prevTickets => [...prevTickets, newTicketData]);
-    setNewTicket({ title: '', group: '', priority: 1 });
-    setShowAddTicketInput(prev => ({ ...prev, [group]: false }));
-  };
-
-  const handleUpdateTicket = (updatedTicket) => {
-    setTicketList(prevTickets =>
-      prevTickets.map(ticket =>
-        ticket.id === updatedTicket.id ? updatedTicket : ticket
-      )
-    );
-  };
-
-  const toggleAddTicketInput = (group) => {
-    setShowAddTicketInput(prev => ({
-      ...prev,
-      [group]: !prev[group],
-    }));
-  };
-
   return (
     <div className="kanban-board">
+      {/* Render the grouped tickets */}
       {Object.keys(groupedTickets).map(group => (
         <div key={group} className="kanban-column">
-          <div className="column-header">
-            <h3>{group}</h3>
-            <div className="button-group">
-              
-              <button
-                className="add-ticket-button"
-                onClick={() => handleAddTicket(group)}
-              >
-                +
-              </button>
-              <button
-                className="toggle-add-ticket-button"
-                onClick={() => toggleAddTicketInput(group)}
-              >
-                ...
-              </button>
-            </div>
-          </div>
+          <h3>{group}</h3>
           {groupedTickets[group].map(ticket => (
-            <TicketCard
-              key={ticket.id}
-              ticket={ticket}
-              onUpdate={handleUpdateTicket}
-            />
+            <TicketCard key={ticket.id} ticket={ticket} />
           ))}
-          {showAddTicketInput[group] && (
-            <div className="add-ticket-inputs">
-              <input
-                type="text"
-                name="title"
-                value={newTicket.title}
-                onChange={handleInputChange}
-                placeholder="New ticket title"
-              />
-              <input
-                type="number"
-                name="priority"
-                value={newTicket.priority}
-                onChange={handleInputChange}
-                placeholder="Priority"
-              />
-            </div>
-          )}
         </div>
       ))}
     </div>
